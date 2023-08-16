@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import { StyleSheet, View} from 'react-native';
 import Telavtr from './comp/telavtr';
-import Listatelavtr from './comp/listatelavtr';
 
 
 
 export default () => {
   return (
     <View style={styles.container}>      
-          <Telavtr/>
-          <Listatelavtr />   
-          
+        <Telavtr/>   
+        {/* <Tjson/>    */}
     </View>
   );
 };
@@ -20,7 +18,11 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: 'white',
-    padding: 16,
-    justifyContent:'center',}
+    paddingTop: 50,
+    paddingLeft:10,
+    paddingRight:10,
+    justifyContent:'center',
+  },
+   
   });
 
