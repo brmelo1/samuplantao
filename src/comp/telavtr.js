@@ -5,11 +5,10 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Vtr from '../dados/vtr'
 import Turno from '../dados/turno'
 import Profissional from '../dados/profissional';
-import styles from '../Estilo/estilo1';
+import styles from '../Estilo/estilovtr';
 
 
-
-export default () =>{
+export default function Telavtr({navigation}){
   const [valuevtr, setValuevtr] = useState(null);
   const [isFocusvtr, setIsFocusvtr] = useState(false);
   const [valueturno, setValueturno] = useState(null);
@@ -24,13 +23,13 @@ export default () =>{
   
   const ordemPro = Profissional.slice().sort((a, b) => a.label.localeCompare(b.label));
 
-  const onChange = (event, selectedDate) => {
+  const calendario = (event, selectedDate) => {
     const currentDate = selectedDate || data;
     setShowPicker(Platform.OS === 'ios'); // Manter o picker visível para uma experiência mais suave no iOS
     setDate(currentDate);
   };
 
-  const showDatePicker = () => {
+  const showCalendario = () => {
     setShowPicker(true);
   };
 
@@ -123,7 +122,7 @@ export default () =>{
               />
         </View>
         <View style={styles.btn}>
-              <TouchableOpacity style={styles.botao} title="Selecionar Data" onPress={showDatePicker} >
+              <TouchableOpacity style={styles.botao} title="Selecionar Data" onPress={showCalendario} >
                   <Text style={styles.buttonText}>Selecionar Data</Text>
                   {showPicker && (
                       <DateTimePicker
@@ -132,7 +131,7 @@ export default () =>{
                         mode="date" // Pode ser "date" para data, "time" para hora, ou "datetime" para data e hora
                         is24Hour={true} // Define o formato para 24 horas (true) ou 12 horas (false)
                         display="default" // Pode ser "default", "spinner", "calendar", ou "clock"
-                        onChange={onChange}
+                        onChange={calendario}
                       />
                   )}
               </TouchableOpacity>
