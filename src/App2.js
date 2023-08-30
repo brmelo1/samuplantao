@@ -10,17 +10,12 @@ const Stack = createNativeStackNavigator();
 
 export default () => {
   return (
-    // <View style={styles.container}>     
-    //     {/* <Telainicial/>                             */}
-    //     <Telavtr/>               
-    
-    // </View>
-    <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Telainicial" component={Telainicial} />
-      <Stack.Screen name="Telavtr" component={Telavtr} />
-    </Stack.Navigator>
-  </NavigationContainer>
+      <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Telainicial" component={Telainicial} />
+            <Stack.Screen name="Telavtr" component={Telavtr} />
+          </Stack.Navigator>
+      </NavigationContainer>
 
   );
 };
