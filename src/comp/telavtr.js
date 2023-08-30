@@ -9,17 +9,17 @@ import styles from '../Estilo/estilovtr';
 
 
 export default function Telavtr({navigation}){
-  const [valuevtr, setValuevtr] = useState(null);
-  const [isFocusvtr, setIsFocusvtr] = useState(false);
-  const [valueturno, setValueturno] = useState(null);
-  const [isFocusturno, setIsFocusturno] = useState(false);
-  const [data, setDate] = useState(new Date());
-  const [showPicker, setShowPicker] = useState(false);
-  const [valueprofi, setValueprofi] = useState(null);
-  const [isFocusprofi, setIsFocusprofi] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(null);
-  const [savedValues, setSavedValues] = useState([]);
-  const [equipe, setEquipe] = useState([]);
+  const [valuevtr, setValuevtr] = useState(null)
+  const [isFocusvtr, setIsFocusvtr] = useState(false)
+  const [valueturno, setValueturno] = useState(null)
+  const [isFocusturno, setIsFocusturno] = useState(false)
+  const [data, setDate] = useState(new Date())
+  const [showPicker, setShowPicker] = useState(false)
+  const [valueprofi, setValueprofi] = useState(null)
+  const [isFocusprofi, setIsFocusprofi] = useState(false)
+  const [selectedValue, setSelectedValue] = useState(null)
+  const [savedValues, setSavedValues] = useState([])
+  const [equipe, setEquipe] = useState([])
   
   const ordemPro = Profissional.slice().sort((a, b) => a.label.localeCompare(b.label));
 
