@@ -7,6 +7,8 @@ import Turno from '../dados/turno'
 import Profissional from '../dados/profissional';
 import styles from '../Estilo/estilovtr';
 
+import * as Animatabe from 'react-native-animatable'
+
 
 export default function Telavtr({navigation}){
   const [valuevtr, setValuevtr] = useState(null)
@@ -76,7 +78,16 @@ export default function Telavtr({navigation}){
 
    
   return (
-    <View style={styles.container}>      
+    <View style={styles.container}>
+        <View style={styles.containerLogoSamu}>
+          <Animatabe.Image
+              animation='fadeInRight'
+              delay={200}
+              source={require('../assets/logo-com-texto-horizontal.png')}
+              style={styles.logoSamu}
+          />
+        </View>
+
          <View style={styles.form}>
             <Dropdown
               style={[styles.dropdown, isFocusvtr && { borderColor: 'blue' }]}
@@ -121,7 +132,7 @@ export default function Telavtr({navigation}){
               }}        
               />
         </View>
-        <View style={styles.btn}>
+        <View style={styles.btn} >
               <TouchableOpacity style={styles.botao} title="Selecionar Data" onPress={showCalendario} >
                   <Text style={styles.buttonText}>Selecionar Data</Text>
                   {showPicker && (
@@ -136,11 +147,7 @@ export default function Telavtr({navigation}){
                   )}
               </TouchableOpacity>
         </View>
-        <View style={styles.info}>
-            <Text>{valuevtr}</Text>
-            <Text>{valueturno}</Text>
-            <Text>Data selecionada: {data.toLocaleDateString()}</Text>
-        </View> 
+
         <View style={styles.pessoa}>
               <Dropdown style={[styles.dropdownpessoa, isFocusprofi && { borderColor: 'blue' }]}
               placeholderStyle={styles.placeholderStyle}
@@ -166,6 +173,7 @@ export default function Telavtr({navigation}){
                   <Text style={styles.buttonText}>Adicionar</Text>              
               </TouchableOpacity>                  
        </View>
+
        <View style={styles.listapessoa}>
           <FlatList
                 data={savedValues}
@@ -179,7 +187,14 @@ export default function Telavtr({navigation}){
             )}
              keyExtractor={(item, index) => index.toString()}
             />
-        </View> 
+        </View>
+        
+        <View style={styles.info}>
+          <Text style={styles.textInfo}>Viatura selecionada: {valuevtr}</Text>
+          <Text style={styles.textInfo}>Hora selecionada: {valueturno}</Text>
+          <Text style={styles.textInfo}>Data selecionada: {data.toLocaleDateString()}</Text>
+        </View>
+
         <View style={styles.finalizar}>
             <TouchableOpacity style={styles.botaocancela} title="Excluir" onPress={() => apagatotal()} >
                 <Text style={styles.txtex}>Cancelar</Text>              
