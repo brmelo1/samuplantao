@@ -41,5 +41,37 @@ export default StyleSheet.create({
     fontWeight:"bold",
     fontSize:27,
     color:"#FFF",
-  }
+  },
+  campoEquipes:{
+    flex:1,
+    backgroundColor:'#515262'
+
+  },
+  listaEquipes:{
+    flexDirection:'row',
+  },
+  botaoexcluir:{
+    backgroundColor:'#B22222',
+    height:30,
+    width:50,
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  botaoalterar:{
+    backgroundColor:'#f6f84d',
+    height:30,
+    width:50,
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  botaofinalizar:{
+    backgroundColor:'#09ee06',
+    height:30,
+    width:60,
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+  },
 });

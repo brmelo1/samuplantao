@@ -16,6 +16,23 @@ import styles from '../Estilo/estiloInicial';
 
 import * as Animatabe from 'react-native-animatable'
 
+const equipes=[{
+    "vtr": "USB01",
+    "turno": "06:00 - 12:00",
+    "data": "23-07-2023",
+    "profi": ['bruno','angra','luiz'],
+},{
+    "vtr": "USB02",
+    "turno": "06:00 - 12:00",
+    "data": "23-07-2023",
+    "profi": ['joao','maria','toin'],
+},{
+    "vtr": "USB03",
+    "turno": "06:00 - 12:00",
+    "data": "23-07-2023",
+    "profi": ['jorge','ana','leticia'],
+}]
+
 export default function Telaincial({navigation}){
     return(
         <SafeAreaView style={styles.container}>
@@ -41,7 +58,31 @@ export default function Telaincial({navigation}){
                     </TouchableOpacity>
                 </View>
             </View>
+            <View style={styles.campoEquipes} >
+            <FlatList
+                data={equipes}
+                renderItem={({ item }) => (
+                <View style={styles.listaEquipes}>
+                    <Text style={styles.savedItem}>{item.vtr}  </Text>
+                    <Text style={styles.savedItem}>{item.turno}  </Text>
+                    <Text style={styles.savedItem}>{item.data}</Text>
+                    <TouchableOpacity style={styles.botaofinalizar} title="Excluir" onPress={() => removeprofissional(item)} >
+                        <Text style={styles.txtex}>Finalizar</Text>              
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.botaoalterar} title="Excluir" onPress={() => removeprofissional(item)} >
+                        <Text style={styles.txtex}>Alterar</Text>              
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.botaoexcluir} title="Excluir" onPress={() => removeprofissional(item)} >
+                        <Text style={styles.txtex}>Excluir</Text>              
+                    </TouchableOpacity>
+                    
+                </View>
+            )}
+             keyExtractor={(item, index) => index.toString()}
+            />
 
+               
+            </View>
             
         </SafeAreaView>
     )
