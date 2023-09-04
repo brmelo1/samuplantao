@@ -83,7 +83,7 @@ export default StyleSheet.create({
     paddingEnd:5,
     justifyContent:'center',
     minHeight:0,
-    maxHeight:165,    
+    maxHeight:190,    
     overflow:"auto",
     backgroundColor:"#cecece"
   },   

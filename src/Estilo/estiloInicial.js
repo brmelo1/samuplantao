@@ -28,8 +28,7 @@ export default StyleSheet.create({
   buttonText:{
     color:"#FFF",
     fontWeight:"bold",
-    fontSize:22,
-    
+    fontSize:22,    
   },
   tituloTelaInicial:{
     alignItems:"center",
