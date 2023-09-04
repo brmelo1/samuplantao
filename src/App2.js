@@ -1,35 +1,39 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
-import Telavtr from './comp/Telavtr';
-import Telainicial from './comp/Telainicial';
+import { StatusBar } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Routes from './routes';
 
-
-const Stack = createNativeStackNavigator();
-
-export default () => {
+export default function App() {
   return (
-      <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Telainicial" component={Telainicial} />
-            <Stack.Screen name="Telavtr" component={Telavtr} />
-          </Stack.Navigator>
-      </NavigationContainer>
-
+    <NavigationContainer>
+      <StatusBar backgroundColor="#38A69D" barStyle={'light-content'}/>
+      <Routes/>
+    </NavigationContainer>
   );
-};
+}
+
+// import React from 'react';
+// import { View, StatusBar} from 'react-native';
+// import Telavtr from './comp/Telavtr';
+// import Telainicial from './comp/Telainicial';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: 'white',
-    paddingTop: 50,
-    paddingLeft:10,
-    paddingRight:10,
-    justifyContent:'center',
-  },
-   
-  });
+// const Stack = createNativeStackNavigator();
+
+// export default () => {
+//   return (
+//       <NavigationContainer>
+//         <StatusBar backgroundColor="#38A69D" barStyle={'light-content'}/>
+
+//         <Stack.Navigator>
+//           <Stack.Screen name="Telainicial" component={Telainicial} />
+//           <Stack.Screen name="Telavtr" component={Telavtr} />
+//         </Stack.Navigator>
+//       </NavigationContainer>
+
+//   );
+// };
 

@@ -2,8 +2,9 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
   container: {
+    width:"100%",
     flex:1,
-    backgroundColor: 'white',      
+    backgroundColor: 'white',
     justifyContent:'center',
     marginBottom:10,      
   },
@@ -15,7 +16,8 @@ export default StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 8,
     marginLeft:5,
-    marginRight:5,      
+    marginRight:5,
+     
     
   },
   icon: {
@@ -46,30 +48,44 @@ export default StyleSheet.create({
   },
  form:{
     flex:1,
-    backgroundColor: '#E9967A',
     justifyContent: 'space-around', 
     flexDirection:'row', 
-    alignItems:'center',     
+    alignItems:'center',
+    marginTop:20,
+    marginBottom:0 
   },
   btn:{
-    flex:1,
-    backgroundColor: '#123',
+    paddingStart:5,
+    paddingEnd:5,
     justifyContent:'center',       
   },
   info:{
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
     flex:1,
-    backgroundColor: '#2cf',
-    justifyContent:'center',       
+    fontSize:15,
+    justifyContent:'center',
+    paddingStart:7,
+    marginTop:10  
   },
-  pessoa:{       
-    flex:2, 
-    backgroundColor: '#abc',
+  textInfo: {
+    fontSize:16,
+    fontWeight:"bold"
+  },
+  pessoa:{
+    paddingStart:5,
+    paddingEnd:5,
     justifyContent:'center',            
   },
   listapessoa:{
-    flex:6,
-    backgroundColor: '#dcf',
+    marginTop:25,
+    paddingStart:5,
+    paddingEnd:5,
     justifyContent:'center',
+    minHeight:0,
+    maxHeight:165,    
+    overflow:"auto",
+    backgroundColor:"#cecece"
   },   
   dropdownpessoa: {
     height: 50,
@@ -77,7 +93,8 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
-    margin:10,
+    marginTop:10,
+    marginBottom:10
   }, 
   savedItem: {
     fontSize: 16,
@@ -91,18 +108,19 @@ export default StyleSheet.create({
     marginRight:10,
     marginVertical: 5,
 },
-    savedItem: {
-        fontSize: 16,
+savedItem: {
+    fontSize: 16,
 }, 
 botao:{
   backgroundColor: '#3498db',
-  padding: 15,
+  padding: 10,
   borderRadius: 5,
   alignItems:'center',
 },
 buttonText: {
+  borderRadius:20,
   color: 'white',
-  fontSize: 16,
+  fontSize: 20,
   fontWeight: 'bold',    
 },  
 botaoexcluir:{
@@ -139,5 +157,13 @@ botaosalva:{
 txtex:{
   fontWeight:'bold',
   fontSize:16,
+},
+
+containerLogoSamu: {
+  width:"100%",
+},
+logoSamu:{
+  width:150,
+  height:75,
 }
 });
