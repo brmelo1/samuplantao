@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { 
     Text, 
     View,
@@ -10,11 +10,11 @@ import {
     StyleSheet, 
     Image 
 } from 'react-native';
-
-import { Dropdown } from 'react-native-element-dropdown';
+import axios from "axios";
+import api from '../services/api'
 import styles from '../Estilo/estiloInicial';
-
 import * as Animatabe from 'react-native-animatable'
+
 
 const equipes=[{
     "vtr": "USB01",
@@ -33,7 +33,23 @@ const equipes=[{
     "profi": ['jorge','ana','leticia'],
 }]
 
+
 export default function Telaincial({navigation}){
+    
+    const ppi1='http://localhost:5000/equipesamu'
+    const ppi2='https://fakestoreapi.com/products/categories'
+
+    useEffect(()=>{
+        gData()
+    },[])
+
+    const gData = async ()=>{
+        const res = await axios.get(ppi2)
+        console.log(res.data)
+    }
+    
+
+
     return(
         <SafeAreaView style={styles.container}>
 
@@ -55,6 +71,9 @@ export default function Telaincial({navigation}){
                 <View  style={styles.btn}>
                     <TouchableOpacity style={styles.botao} title="Selecionar Data" onPress={()=> navigation.navigate('Telavtr')} >
                         <Text style={styles.buttonText}>Cadastrar Equipe</Text>                  
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.botao} title="Selecionar Data"  >
+                        <Text style={styles.buttonText}>pegar</Text>                  
                     </TouchableOpacity>
                 </View>
             </View>

@@ -53,6 +53,7 @@ export default function Telavtr({navigation}){
       setValueprofi(null);      
       setSelectedValue(null);
       setSavedValues([]);
+      navigation.navigate('Telainicial')
     }
     const salvatotal= () =>{
       const novaEquipe = {
@@ -61,19 +62,20 @@ export default function Telavtr({navigation}){
         "data": data.toLocaleDateString(),
         "profi": savedValues,
       }
-      if (savedValues.length ===0 || !data || !valueturno || !valuevtr){
-          console.warn('ta errado')      
-      }
-      else{
-        setEquipe(prevEquipes => [...prevEquipes, novaEquipe])
-        setValuevtr(null)      
-        setValueturno(null);      
-        setDate(new Date());      
-        setValueprofi(null);      
-        setSelectedValue(null);
-        setSavedValues([]);
-      }      
-      console.warn(equipe)
+        if (savedValues.length ===0 || !data || !valueturno || !valuevtr){
+            console.warn('ta errado')      
+        }
+        else{
+          setEquipe(prevEquipes => [...prevEquipes, novaEquipe])
+          setValuevtr(null)      
+          setValueturno(null);      
+          setDate(new Date());      
+          setValueprofi(null);      
+          setSelectedValue(null);
+          setSavedValues([]);
+          navigation.navigate('Telainicial')
+          console.warn(equipe)
+        }      
       }
 
    
