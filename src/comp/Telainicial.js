@@ -31,6 +31,12 @@ const equipes=[{
     "turno": "06:00 - 12:00",
     "data": "23-07-2023",
     "profi": ['jorge','ana','leticia'],
+},
+{
+    "vtr": "USB04",
+    "turno": "06:00 - 12:00",
+    "data": "23-07-2023",
+    "profi": ['marcia','carem','joão'],
 }]
 
 export default function Telaincial({navigation}){
@@ -58,30 +64,29 @@ export default function Telaincial({navigation}){
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={styles.campoEquipes} >
-            <FlatList
-                data={equipes}
-                renderItem={({ item }) => (
-                <View style={styles.listaEquipes}>
-                    <Text style={styles.savedItem}>{item.vtr}  </Text>
-                    <Text style={styles.savedItem}>{item.turno}  </Text>
-                    <Text style={styles.savedItem}>{item.data}</Text>
-                    <TouchableOpacity style={styles.botaofinalizar} title="Excluir" onPress={() => removeprofissional(item)} >
-                        <Text style={styles.txtex}>Finalizar</Text>              
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.botaoalterar} title="Excluir" onPress={() => removeprofissional(item)} >
-                        <Text style={styles.txtex}>Alterar</Text>              
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.botaoexcluir} title="Excluir" onPress={() => removeprofissional(item)} >
-                        <Text style={styles.txtex}>Excluir</Text>              
-                    </TouchableOpacity>
-                    
-                </View>
-            )}
-             keyExtractor={(item, index) => index.toString()}
-            />
 
-               
+
+            <View style={styles.campoEquipes} >
+                <FlatList
+                    data={equipes}
+                    renderItem={({ item }) => (
+                    <View style={styles.listaEquipes}>
+                        <Text style={styles.savedItem}>{item.vtr}</Text>
+                        <Text style={styles.savedItem}>{item.turno}</Text>
+                        <Text style={styles.savedItem}>{item.data}</Text>
+                        <TouchableOpacity style={styles.botaofinalizar} title="Excluir" onPress={() => removeprofissional(item)} >
+                            <Text style={styles.txtfi}>Finalizar</Text>              
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.botaoalterar} title="Excluir" onPress={() => removeprofissional(item)} >
+                            <Text style={styles.txtal}>Alterar</Text>              
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.botaoexcluir} title="Excluir" onPress={() => removeprofissional(item)} >
+                            <Text style={styles.txtex}>Excluir</Text>              
+                        </TouchableOpacity>
+                    </View>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+                />
             </View>
             
         </SafeAreaView>
