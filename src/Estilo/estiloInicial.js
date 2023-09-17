@@ -11,17 +11,19 @@ export default StyleSheet.create({
     flex:2,
     borderTopLeftRadius:25,
     borderTopRightRadius:25,
+    // borderBottomLeftRadius:15,
+    // borderBottomRightRadius:15
   },
   btn:{
     flex:1,
     // backgroundColor: '#f23',
     justifyContent:'center',
-    marginHorizontal:10,
+    marginHorizontal:15,
   }, 
   botao:{
     marginTop:0,
     backgroundColor: '#d83135',
-    padding: 20,
+    padding: 15,
     borderRadius: 10,
     alignItems:'center',
   },
@@ -44,34 +46,60 @@ export default StyleSheet.create({
   },
   campoEquipes:{
     flex:1,
-    backgroundColor:'#515262'
-
+    backgroundColor:"#f0f0f0",
   },
   listaEquipes:{
     flexDirection:'row',
+    alignItems:"center",
+    justifyContent:"center",
+    margin:1.5,
+    backgroundColor:"rgba(0,0,0,.05);",
+    height:40,
+  },
+  savedItem:{
+    fontSize:15,
+    color:"black",
+    // fontWeight:"bold",
+    marginRight:3
   },
   botaoexcluir:{
     backgroundColor:'#B22222',
-    height:30,
+    height:27,
     width:50,
-    borderRadius:20,
+    borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
+    margin:0.5
+
   },
   botaoalterar:{
-    backgroundColor:'#f6f84d',
-    height:30,
+    backgroundColor:'#fff600',
+    height:27,
     width:50,
-    borderRadius:20,
+    borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
+    margin:0.5,
   },
   botaofinalizar:{
     backgroundColor:'#09ee06',
-    height:30,
+    height:27,
     width:60,
-    borderRadius:20,
+    borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
+    margin:0.5
   },
+  txtfi:{
+    color:"#323232",
+    fontWeight:"bold"
+  },
+  txtal:{
+    color:"#323232",
+    fontWeight:"bold"
+  },
+  txtex:{
+    color:"#FFF",
+    fontWeight:"bold"
+  }
 });
