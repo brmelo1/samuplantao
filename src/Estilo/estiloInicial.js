@@ -69,7 +69,7 @@ export default StyleSheet.create({
     borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
-    margin:0.5
+    margin:2
 
   },
   botaoalterar:{
@@ -79,7 +79,7 @@ export default StyleSheet.create({
     borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
-    margin:0.5,
+    margin:2
   },
   botaofinalizar:{
     backgroundColor:'#09ee06',
@@ -88,7 +88,7 @@ export default StyleSheet.create({
     borderRadius:10,
     alignItems:'center',
     justifyContent:'center',
-    margin:0.5
+    margin:2
   },
   txtfi:{
     color:"#323232",
