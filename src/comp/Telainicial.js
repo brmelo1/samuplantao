@@ -77,10 +77,7 @@ export default function Telaincial({navigation}){
                 <View  style={styles.btn}>
                     <TouchableOpacity style={styles.botao} title="Selecionar Data" onPress={()=> navigation.navigate('Telavtr')} >
                         <Text style={styles.buttonText}>Cadastrar Equipe</Text>                  
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.botao} title="Selecionar Data"  >
-                        <Text style={styles.buttonText}>pegar</Text>                  
-                    </TouchableOpacity>
+                    </TouchableOpacity>                   
                 </View>
             </View>
 

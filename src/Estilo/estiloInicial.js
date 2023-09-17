@@ -45,19 +45,19 @@ export default StyleSheet.create({
     color:"#FFF",
   },
   campoEquipes:{
-    flex:1,
-    backgroundColor:"#f0f0f0",
+    flex:2,
+    backgroundColor:"#f0f0f0",   
   },
   listaEquipes:{
     flexDirection:'row',
     alignItems:"center",
     justifyContent:"center",
-    margin:1.5,
+    margin:5,
     backgroundColor:"rgba(0,0,0,.05);",
     height:40,
   },
   savedItem:{
-    fontSize:15,
+    fontSize:13,
     color:"black",
     // fontWeight:"bold",
     marginRight:3

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Telavtr from '../comp/Telavtr';
+import Telavtr from '../comp/telavtr';
 import Telainicial from '../comp/Telainicial';
 
 const Stack = createNativeStackNavigator();
