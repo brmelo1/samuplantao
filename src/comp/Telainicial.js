@@ -10,10 +10,10 @@ import {
     StyleSheet, 
     Image 
 } from 'react-native';
-import axios from "axios";
-import api from '../services/api'
 import styles from '../Estilo/estiloInicial';
 import * as Animatabe from 'react-native-animatable'
+import { fire_banco } from '../Firebase/firebase';
+import { collection, getDocs } from "firebase/firestore"; 
 
 
 const equipes=[{
@@ -36,17 +36,26 @@ const equipes=[{
 
 export default function Telaincial({navigation}){
     
-    const ppi1='http://localhost:5000/equipesamu'
-    const ppi2='https://fakestoreapi.com/products/categories'
+    
+    const [todos, setTodos] = useState([]);
 
-    useEffect(()=>{
-        gData()
-    },[])
+    useEffect(() => {
+        async function fetchTodos() {
+        const querySnapshot = await getDocs(collection(fire_banco, 'equipesamu'));
+        const todos = [];
 
-    const gData = async ()=>{
-        const res = await axios.get(ppi2)
-        console.log(res.data)
-    }
+        querySnapshot.forEach((doc) => {
+            todos.push({
+            id: doc.id,
+            ...doc.data(),
+            });
+        });
+
+        setTodos(todos);
+        }
+
+        fetchTodos();
+    }, []);
     
 
 
@@ -71,15 +80,12 @@ export default function Telaincial({navigation}){
                 <View  style={styles.btn}>
                     <TouchableOpacity style={styles.botao} title="Selecionar Data" onPress={()=> navigation.navigate('Telavtr')} >
                         <Text style={styles.buttonText}>Cadastrar Equipe</Text>                  
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.botao} title="Selecionar Data"  >
-                        <Text style={styles.buttonText}>pegar</Text>                  
-                    </TouchableOpacity>
+                    </TouchableOpacity>                    
                 </View>
             </View>
             <View style={styles.campoEquipes} >
             <FlatList
-                data={equipes}
+                data={todos}
                 renderItem={({ item }) => (
                 <View style={styles.listaEquipes}>
                     <Text style={styles.savedItem}>{item.vtr}  </Text>
