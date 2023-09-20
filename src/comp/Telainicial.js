@@ -10,10 +10,10 @@ import {
     StyleSheet, 
     Image 
 } from 'react-native';
-import axios from "axios";
-import api from '../services/api'
 import styles from '../Estilo/estiloInicial';
 import * as Animatabe from 'react-native-animatable'
+import { fire_banco } from '../Firebase/firebase';
+import { collection, getDocs } from "firebase/firestore"; 
 
 
 const equipes=[{
@@ -42,18 +42,43 @@ const equipes=[{
 
 export default function Telaincial({navigation}){
     
-    const ppi1='http://localhost:5000/equipesamu'
-    const ppi2='https://fakestoreapi.com/products/categories'
-
-    useEffect(()=>{
-        gData()
-    },[])
-
-    const gData = async ()=>{
-        const res = await axios.get(ppi2)
-        console.log(res.data)
-    }
+    const [todos, setTodos] = useState([]);
+    const [docId, setDocId] = useState('');
     
+
+    useEffect(() => {
+        const firebaseApp = firebase.initializeApp();
+        const firestore = firebaseApp.firestore();
+
+        const collectionRef = firestore.collection('my-collection');
+
+        const docRef = collectionRef.doc(docId);
+
+        docRef.delete().then(() => {
+        console.log('Documento excluído com sucesso!');
+        }).catch((error) => {
+        console.log(error);
+        });
+    }, [docId]);
+
+
+    useEffect(() => {
+        async function fetchTodos() {
+        const querySnapshot = await getDocs(collection(fire_banco, 'equipesamu'));
+        const todos = [];
+
+        querySnapshot.forEach((doc) => {
+            todos.push({
+            id: doc.id,
+            ...doc.data(),
+            });
+        });
+
+        setTodos(todos);
+        }
+
+        fetchTodos();
+    }, []);
 
 
     return(
@@ -84,7 +109,7 @@ export default function Telaincial({navigation}){
 
             <View style={styles.campoEquipes} >
                 <FlatList
-                    data={equipes}
+                    data={todos}
                     renderItem={({ item }) => (
                     <View style={styles.listaEquipes}>
                         <Text style={styles.savedItem}>{item.vtr}</Text>

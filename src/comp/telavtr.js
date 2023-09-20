@@ -6,7 +6,8 @@ import Vtr from '../dados/vtr'
 import Turno from '../dados/turno'
 import Profissional from '../dados/profissional';
 import styles from '../Estilo/estilovtr';
-
+import { fire_banco } from '../Firebase/firebase';
+import { collection, addDoc } from "firebase/firestore"; 
 import * as Animatabe from 'react-native-animatable'
 
 
@@ -66,7 +67,12 @@ export default function Telavtr({navigation}){
             console.warn('ta errado')      
         }
         else{
-          setEquipe(prevEquipes => [...prevEquipes, novaEquipe])
+            const doc= addDoc(collection(fire_banco,'equipesamu'),{vtr: valuevtr,
+            turno: valueturno,
+            data: data.toLocaleDateString(),
+            profi: savedValues,ativado:true})
+            console.log('foi ', doc)                        
+          // setEquipe(prevEquipes => [...prevEquipes, novaEquipe])
           setValuevtr(null)      
           setValueturno(null);      
           setDate(new Date());      
