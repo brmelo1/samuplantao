@@ -3,84 +3,48 @@ import {
     Text, 
     View,
     TouchableOpacity, 
-    Platform,
     FlatList,
-    Button, 
-    SafeAreaView, 
-    StyleSheet, 
-    Image 
+    SafeAreaView,     
 } from 'react-native';
 import styles from '../Estilo/estiloInicial';
 import * as Animatabe from 'react-native-animatable'
 import { fire_banco } from '../Firebase/firebase';
-import { collection, getDocs } from "firebase/firestore"; 
-
-
-const equipes=[{
-    "vtr": "USB01",
-    "turno": "06:00 - 12:00",
-    "data": "23-07-2023",
-    "profi": ['bruno','angra','luiz'],
-},{
-    "vtr": "USB02",
-    "turno": "06:00 - 12:00",
-    "data": "23-07-2023",
-    "profi": ['joao','maria','toin'],
-},{
-    "vtr": "USB03",
-    "turno": "06:00 - 12:00",
-    "data": "23-07-2023",
-    "profi": ['jorge','ana','leticia'],
-},
-{
-    "vtr": "USB04",
-    "turno": "06:00 - 12:00",
-    "data": "23-07-2023",
-    "profi": ['marcia','carem','joão'],
-}]
+import { collection, doc, deleteDoc,updateDoc,onSnapshot } from "firebase/firestore"; 
 
 
 export default function Telaincial({navigation}){
-    
-    const [todos, setTodos] = useState([]);
-    const [docId, setDocId] = useState('');
-    
+    const [todos, setTodos] = useState([]);    
 
-    useEffect(() => {
-        const firebaseApp = firebase.initializeApp();
-        const firestore = firebaseApp.firestore();
-
-        const collectionRef = firestore.collection('my-collection');
-
-        const docRef = collectionRef.doc(docId);
-
-        docRef.delete().then(() => {
-        console.log('Documento excluído com sucesso!');
-        }).catch((error) => {
-        console.log(error);
+    const fetchTodos = () => {
+        return onSnapshot(collection(fire_banco, 'equipesamu'), (snapshot) => {
+          const newTodos = [];
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            if (data.ativado === true) {
+              newTodos.push({
+                id: doc.id,
+                ...data,
+              });
+            }
+          });
+          setTodos(newTodos);
         });
-    }, [docId]);
-
-
+      };
+      
     useEffect(() => {
-        async function fetchTodos() {
-        const querySnapshot = await getDocs(collection(fire_banco, 'equipesamu'));
-        const todos = [];
-
-        querySnapshot.forEach((doc) => {
-            todos.push({
-            id: doc.id,
-            ...doc.data(),
-            });
-        });
-
-        setTodos(todos);
-        }
-
         fetchTodos();
-    }, []);
+      }, []);
+    
 
+    async function removeprofissional(item) {
+        await deleteDoc(doc(fire_banco, "equipesamu", item.id));
+        
+      }
+    async function finalizarprofissional(item) {
+        await updateDoc(doc(fire_banco, "equipesamu", item.id),{ativado:false});        
+      }
 
+    
     return(
         <SafeAreaView style={styles.container}>
 
@@ -106,30 +70,33 @@ export default function Telaincial({navigation}){
                 </View>
             </View>
 
-
             <View style={styles.campoEquipes} >
                 <FlatList
                     data={todos}
                     renderItem={({ item }) => (
                     <View style={styles.listaEquipes}>
-                        <Text style={styles.savedItem}>{item.vtr}</Text>
-                        <Text style={styles.savedItem}>{item.turno}</Text>
-                        <Text style={styles.savedItem}>{item.data}</Text>
-                        <TouchableOpacity style={styles.botaofinalizar} title="Excluir" onPress={() => removeprofissional(item)} >
-                            <Text style={styles.txtfi}>Finalizar</Text>              
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.botaoalterar} title="Excluir" onPress={() => removeprofissional(item)} >
-                            <Text style={styles.txtal}>Alterar</Text>              
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.botaoexcluir} title="Excluir" onPress={() => removeprofissional(item)} >
-                            <Text style={styles.txtex}>Excluir</Text>              
-                        </TouchableOpacity>
+                        <View style={styles.dadosequipes}>
+                            <Text style={styles.savedItem}>{item.vtr}</Text>
+                            <Text style={styles.savedItem}>{item.turno}</Text>
+                            <Text style={styles.savedItem}>{item.data}</Text>
+                        </View>
+                        <View style={styles.btnEquipes}>
+                            <TouchableOpacity style={styles.botaofinalizar} title="Finalizar" onPress={() => finalizarprofissional(item)} >
+                                <Text style={styles.txtfi}>Finalizar</Text>              
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.botaoalterar} title="Alterar" onPress={() => alteraprofissional(item)} >
+                                <Text style={styles.txtal}>Alterar</Text>              
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.botaoexcluir} title="Excluir"  onPress={() => removeprofissional(item)} >
+                                <Text style={styles.txtex}>Excluir</Text>              
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 )}
                 keyExtractor={(item, index) => index.toString()}
-                />
-            </View>
-            
+                />                
+
+            </View>            
         </SafeAreaView>
     )
 }

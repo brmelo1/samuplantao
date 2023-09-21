@@ -56,6 +56,19 @@ export default StyleSheet.create({
     backgroundColor:"rgba(0,0,0,.05);",
     height:40,
   },
+  dadosequipes:{
+    flex:1,
+    flexDirection:'row',
+    alignItems:"flex-start",
+    justifyContent:"center",
+    margin:5,
+  },btnEquipes:{
+    flex:1,
+    flexDirection:'row',
+    alignItems:'flex-end',
+    justifyContent:"center",
+    margin:5,
+  },
   savedItem:{
     fontSize:13,
     color:"black",

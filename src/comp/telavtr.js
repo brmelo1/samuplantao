@@ -21,10 +21,10 @@ export default function Telavtr({navigation}){
   const [valueprofi, setValueprofi] = useState(null)
   const [isFocusprofi, setIsFocusprofi] = useState(false)
   const [selectedValue, setSelectedValue] = useState(null)
-  const [savedValues, setSavedValues] = useState([])
-  const [equipe, setEquipe] = useState([])
-  
+  const [savedValues, setSavedValues] = useState([])  
   const ordemPro = Profissional.slice().sort((a, b) => a.label.localeCompare(b.label));
+
+  
 
   const calendario = (event, selectedDate) => {
     const currentDate = selectedDate || data;
@@ -57,30 +57,22 @@ export default function Telavtr({navigation}){
       navigation.navigate('Telainicial')
     }
     const salvatotal= () =>{
-      const novaEquipe = {
-        "vtr": valuevtr,
-        "turno": valueturno,
-        "data": data.toLocaleDateString(),
-        "profi": savedValues,
-      }
         if (savedValues.length ===0 || !data || !valueturno || !valuevtr){
             console.warn('ta errado')      
         }
         else{
-            const doc= addDoc(collection(fire_banco,'equipesamu'),{vtr: valuevtr,
-            turno: valueturno,
-            data: data.toLocaleDateString(),
-            profi: savedValues,ativado:true})
-            console.log('foi ', doc)                        
-          // setEquipe(prevEquipes => [...prevEquipes, novaEquipe])
+          const doc= addDoc(collection(fire_banco,'equipesamu'),{vtr: valuevtr,
+          turno: valueturno,
+          data: data.toLocaleDateString(),
+          profi: savedValues,ativado:true})
+          console.log('foi ', doc)                                 
           setValuevtr(null)      
           setValueturno(null);      
           setDate(new Date());      
           setValueprofi(null);      
           setSelectedValue(null);
           setSavedValues([]);
-          navigation.navigate('Telainicial')
-          console.warn(equipe)
+          navigation.navigate('Telainicial')         
         }      
       }
 
