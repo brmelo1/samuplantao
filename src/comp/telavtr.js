@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View,TouchableOpacity, Platform,FlatList ,Button } from 'react-native';
+import { Text, View,TouchableOpacity, Platform,FlatList ,Alert } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Vtr from '../dados/vtr'
@@ -58,7 +58,7 @@ export default function Telavtr({navigation}){
     }
     const salvatotal= () =>{
         if (savedValues.length ===0 || !data || !valueturno || !valuevtr){
-            console.warn('ta errado')      
+            Alert.alert("Erro!", "Favor preencher todos os campos.")      
         }
         else{
           const doc= addDoc(collection(fire_banco,'equipesamu'),{vtr: valuevtr,
